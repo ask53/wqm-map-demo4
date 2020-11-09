@@ -1115,17 +1115,25 @@ function pointIsValid(i) {		//checks if that points at AllData[i] is valid. If s
 	if( AllData[i][DATA_NAMES.lat] == null | AllData[i][DATA_NAMES.lat] == "" |	//	make sure, for a given point, that the
 		AllData[i][DATA_NAMES.lng] == null | AllData[i][DATA_NAMES.lng] == "" |			//	lat, lng, and date are all present
 		AllData[i][DATA_NAMES.date] == NOT_PRESENT ) {
+		t1_validCheck = performance.now();
+		validCheckTime = validCheckTime + t1_validCheck - t0_validCheck;
 		return false
 	} 
 	if( activeContaminant == FLUORIDE &&				// if we're looking at fluoride points
 		(AllData[i][DATA_NAMES.f] == null | AllData[i][DATA_NAMES.f] == "")) {	// only show points who have a fluoride value
+		t1_validCheck = performance.now();
+		validCheckTime = validCheckTime + t1_validCheck - t0_validCheck;
 		return false
 	} else if ( activeContaminant == ARSENIC &&				// if we're only looking at arsenic points
 		(AllData[i][DATA_NAMES.as] == null | AllData[i][DATA_NAMES.as] == "") ) {	// only show points who have an arsenic value
+		t1_validCheck = performance.now();
+		validCheckTime = validCheckTime + t1_validCheck - t0_validCheck;
 		return false
 	} else if ( activeContaminant == TOTAL_RISK && 			// if we're showing total risk, only show points
 	( 	(AllData[i][DATA_NAMES.f] == null | AllData[i][DATA_NAMES.f] == "") &&		// that have either an arsenic or fluoride value
 		(AllData[i][DATA_NAMES.as] == null | AllData[i][DATA_NAMES.as] == "") )) {
+		t1_validCheck = performance.now();
+		validCheckTime = validCheckTime + t1_validCheck - t0_validCheck;
 		return false	
 	} 
 	t1_validCheck = performance.now();
