@@ -3,7 +3,12 @@ var t0 = 0
 var t1 = 0
 var t0_add = 0
 var t1_add = 0
+var t0_bin = 0
+var t1_bin = 0
+
+var binTime = 0
 var addToMapTime = 0
+var plotTime = 0
 ////////////////////////////
 
 function setGlobals() {
@@ -175,7 +180,13 @@ function onQueryResponse(response) {
 		t0 = performance.now()
 		plotData(TOTAL_RISK);												// feed into plotting function	
 		t1 = performance.now()
-		console.log('Time taken to plot data is '+(t1-t0)+' miliseconds');		
+		plotTime = t1-t0
+		console.log('Time taken to plot data is '+plotTime+' miliseconds, which can be broken down into:');		
+		
+		console.log('----- Time taken in total to add all points to map using point.addTo(map) is '+addToMapTime+' miliseconds, ('+addToMapTime/plotTime+'% of plotting time);');		
+		console.log('----- Time taken in total to determine bins is '+binTime+' miliseconds, ('+binTime/plotTime+'% of plotting time);');		
+		
+		
 	}
 }
 
@@ -279,7 +290,7 @@ function plotData(contaminantToShow) {
 			
 			};
 		}
-		console.log('Time taken in total to add all points to map using point.addTo(map) is '+addToMapTime+' miliseconds');
+		
 	}
 	if (spiderOpen) { 											// If the spider was open already and closed,
 		if (presentIn2dArray(dup_indices, i)[0]) {
@@ -384,6 +395,7 @@ function plotMarker(type, contam, data_index, border) {
 ////////////////////////////////////////////////////////////////////////////////
 
 function getBin(index, bins) {
+	t0_bin = performance.now();
 	var pureBins = Array.from(bins);				// store a copy of bins into pureBins
 	
 	if (bins[0]=="combined") {						// if the bins are combined
@@ -455,6 +467,8 @@ function getBin(index, bins) {
 		//	they should go in the "else" here or in an "else if" where
 		// 	you can parse the bin. Good luck!
 	};
+	t1_bin = performance.now();
+	binTime = binTime + t1 - t0;
 	return realBin;	
 }
 
