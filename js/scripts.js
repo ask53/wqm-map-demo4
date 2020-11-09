@@ -1,30 +1,7 @@
-/* This upcoming script tag holds all of the functions and scripts that
-will run. If something isn't in a function, it runs automatically on load.
-Those are mostly global variable and CONSTANT definitions. If a variable's 
-value is constant, it is declared in BLOCK_LETTERS (with underscores between
-words). This is just a personal convention I use to avoid getting confused. 
-if a variable's value can change, its written with the first
-word beginning in lowercase, and the rest beginning upper, as in: helloThereYou. 
-Sometimes i depart from this convention for various reasons. For this, I appologize. =)
-	The functions only run when they're called, either by the html code above,
-by another function, or by a user event like a click or zoom. */
-		
-////////////////////////////////////////////////////////////////////////////////
-////					 DEFINE GLOBAL VARIABLES 						  	////
-////																		////
-////	IF YOU'RE TRYING TO CHANGE THE FORMATTING / COLORS / STYLES /		////
-////		DATASET IN THE EXISTING MAP, YOU SHOULD ONLY NEED TO CHANGE 	////
-////		STUFF IN THIS SECTION. DON'T CHANGE ANYTHING ELSE IF YOU'RE		////
-////		NOT SURE WHAT IT DOES!!!										////
-////																		////
-////	IF YOU WANT TO CHANGE SOMETHING FUNDAMENTAL, LIKE WHICH VARIABLES 	////
-////		CAN BE PLOTTED WITH THR DROPDOWN MENU, PLEASE REFFER TO THE 	////
-////		TUTORIAL VIDEO POSTED ON TRELLO BEFORE PROCEEDING. 				////
-////																		////
-////////////////////////////////////////////////////////////////////////////////
-
+/////// FOR DEBUGGING //////
 var t0 = 0
 var t1 = 0
+////////////////////////////
 
 function setGlobals() {
 	for (var k=0; k<BASE_URLS.length; k++) {  	// Grab all the icons with correct size. 
