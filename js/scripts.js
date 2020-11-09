@@ -1,6 +1,7 @@
 /////// FOR DEBUGGING //////
 var t0 = 0
 var t1 = 0
+var addToMapTime = 0
 ////////////////////////////
 
 function setGlobals() {
@@ -276,6 +277,7 @@ function plotData(contaminantToShow) {
 			
 			};
 		}
+		console.log('Time taken in total to add all points to map using point.addTo(map) is '+addToMapTime+' miliseconds');
 	}
 	if (spiderOpen) { 											// If the spider was open already and closed,
 		if (presentIn2dArray(dup_indices, i)[0]) {
@@ -283,7 +285,6 @@ function plotData(contaminantToShow) {
 		}
 	};
 }
-//// TESTING GOOGLE SHEETS DATA IMPORT!!!! /////////
 
 ////////////////////////////////////////////////////////////////////////////////
 ////					 	plotMarker FUNCTION 						  	////
@@ -348,14 +349,6 @@ function plotMarker(type, contam, data_index, border) {
 		}
 		
 		
-		
-		//var orgsArray = AllData[data_index][DATA_NAMES.test_org].split("; ");	// THIS REQUIRES THAT TESTING ORGANIZATIONS ARE
-		//for (var k=0; k<orgsArray.length; k++) {							//	SEPARATED IN THE DATABASE BY A SEMI-COLON AND A SPACE
-		//	if(ORGS.indexOf(orgsArray[k]) == NOT_PRESENT) {					// 	FOR EXAMPLE: "Caminos de Agua; Texas A&M University"
-		//		ORGS.push(orgsArray[k])
-		//	}
-		//}
-		
 		base.Index.push(data_index);										// store the index in AllData for later access
 		
 		var popupText = getBasePopup(i);// Grab the text for the popup at data index i
@@ -364,7 +357,10 @@ function plotMarker(type, contam, data_index, border) {
 			.setLatLng(latLng)
 			.setContent(popupText)
 		);
+		t0 = performance.now()
 		base.Markers[base.Markers.length-1].addTo(map); // And finally, actually add the markers to the map!
+		t1 = performance.now()
+		addToMapTime = addToMapTime + t1 - t0;
 	} else {						// If the point isn't being displayed, push
 		base.Markers.push(false); 	// 	falses into the array, so that the indexes
 		base.Popups.push(false); 	// 	are the same as in the SQL querried data. 
