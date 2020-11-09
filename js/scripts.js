@@ -192,11 +192,11 @@ function onQueryResponse(response) {
 		plotTime = t1-t0
 		console.log('Time taken to plot data is '+plotTime+' miliseconds, which can be broken down into:');		
 		
-		console.log('----- Time taken in total to remove previous layer is '+removeLayerTime+' miliseconds, ('+100*removeLayerTime/plotTime+'% of plotting time);');		
-		console.log('----- Time taken in total to run plotMarker() fn is '+plotMarkerTime+' miliseconds, ('+100*plotMarkerTime/plotTime+'% of plotting time);');		
-		console.log('----- Time taken in total to add all points to map using point.addTo(map) is '+addToMapTime+' miliseconds, ('+100*addToMapTime/plotTime+'% of plotting time);');		
-		console.log('----- Time taken in total to determine bins is '+binTime+' miliseconds, ('+100*binTime/plotTime+'% of plotting time);');		
-		console.log('----- Time taken in total to check point validity is '+validCheckTime+' miliseconds, ('+100*validCheckTime/plotTime+'% of plotting time);');		
+		console.log('-- Time taken in total to remove previous layer is '+removeLayerTime+' miliseconds, ('+100*removeLayerTime/plotTime+'% of plotting time);');		
+		console.log('-- Time taken in total to run plotMarker() fn is '+plotMarkerTime+' miliseconds, ('+100*plotMarkerTime/plotTime+'% of plotting time);');		
+		console.log('----- Time taken in total to add all points to map using point.addTo(map) is '+addToMapTime+' miliseconds, ('+100*addToMapTime/plotTime+'% of plotting time and '+100*addToMapTime/plotMarkerTime+'% of plotMarker() time);');		
+		console.log('-- Time taken in total to determine bins is '+binTime+' miliseconds, ('+100*binTime/plotTime+'% of plotting time);');		
+		console.log('-- Time taken in total to check point validity is '+validCheckTime+' miliseconds, ('+100*validCheckTime/plotTime+'% of plotting time);');		
 		
 		
 	}
