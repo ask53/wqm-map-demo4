@@ -23,6 +23,9 @@ by another function, or by a user event like a click or zoom. */
 ////																		////
 ////////////////////////////////////////////////////////////////////////////////
 
+var t0 = 0
+var t1 = 0
+
 function setGlobals() {
 	for (var k=0; k<BASE_URLS.length; k++) {  	// Grab all the icons with correct size. 
 		BASE_ICONS[k] = L.icon({ 			// 	to be used when displaying the base markers
@@ -174,12 +177,12 @@ function loadData() {
 	var options = {sendMethod: 'auto'};
 	var query = new google.visualization.Query(url, options);
 	query.setQuery('select * ORDER BY A DESC, B');				// Relies on A being date and B being name
-	let t0 = performance.now();
+	t0 = performance.now();
 	query.send(onQueryResponse);						
 }
 
 function onQueryResponse(response) {
-	let t1 = performance.now();
+	t1 = performance.now();
 	console.log('Time taken to get SQL querry response is '+(t1-t0)+' miliseconds');
 	if(response.isError()) {
 		throw new Error("data could not be retieved from Google sheets")
