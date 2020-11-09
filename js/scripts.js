@@ -102,7 +102,7 @@ function init() {
 	if (detectMobile()) {adjustDisplayForMobile();}
 	initMap(); 					// Initialize and display the map object
 	applyBaseMap(MAPBOX_STYLES["default"]); 			// Apply the base tiles to the map
-	loadData(TOTAL_RISK); 	// Load the data for Fluoride (the default contaminant)  
+	loadData(); 	 
 	
 	
 }								
@@ -169,15 +169,18 @@ function applyBaseMap(id) {
 }
 
 
-function loadData(contaminantToShow) {
+function loadData() {
 	var url = DATA_URL;
 	var options = {sendMethod: 'auto'};
 	var query = new google.visualization.Query(url, options);
 	query.setQuery('select * ORDER BY A DESC, B');				// Relies on A being date and B being name
+	let t0 = performance.now();
 	query.send(onQueryResponse);						
 }
 
 function onQueryResponse(response) {
+	let t1 = performance.now();
+	console.log('Time taken to get SQL querry response is '+(t1-t0)+' miliseconds');
 	if(response.isError()) {
 		throw new Error("data could not be retieved from Google sheets")
 	} else {
