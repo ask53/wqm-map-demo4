@@ -5,10 +5,13 @@ var t0_add = 0
 var t1_add = 0
 var t0_bin = 0
 var t1_bin = 0
+var t0_removeLayer = 0
+var t1_removeLayer = 0
 
 var binTime = 0
 var addToMapTime = 0
 var plotTime = 0
+var removeLayerTime = 0
 ////////////////////////////
 
 function setGlobals() {
@@ -183,6 +186,7 @@ function onQueryResponse(response) {
 		plotTime = t1-t0
 		console.log('Time taken to plot data is '+plotTime+' miliseconds, which can be broken down into:');		
 		
+		console.log('----- Time taken in total to remove previous layer is '+removeLayerTime+' miliseconds, ('+100*removeLayerTime/plotTime+'% of plotting time);');		
 		console.log('----- Time taken in total to add all points to map using point.addTo(map) is '+addToMapTime+' miliseconds, ('+100*addToMapTime/plotTime+'% of plotting time);');		
 		console.log('----- Time taken in total to determine bins is '+binTime+' miliseconds, ('+100*binTime/plotTime+'% of plotting time);');		
 		
@@ -221,13 +225,15 @@ function plotData(contaminantToShow) {
 	} else { 							// if the currently-displayed contaminant is
 										//	selected again, don't do anything! Otherwise:
 		if (activeContaminant != NOT_PRESENT) { 	// if there's already a layer being displayed
+			t0_removeLayer = performance.now();
 			for (var l=0; l<base.Markers.length; l++) {
 				if (base.Markers[l]){ 	// if a marker exists,
 					map.removeLayer(base.Markers[l]);
 				};						// clear it, to wipe the map clean. 
 			};
 			hideLegend();				// and then hide the legend. 
-
+			t1_removeLayer = performance.now()
+			removeLayerTime = t1_removeLayer - t0_removeLayer
 		};
 		activeContaminant = contaminantToShow;  // Store the contaminant as a global
 		adjustDDText(contaminantToShow); 		// Adjust the text in the drop down menu to display the current contaminant
