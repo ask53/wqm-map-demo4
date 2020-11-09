@@ -9,12 +9,15 @@ var t0_removeLayer = 0
 var t1_removeLayer = 0
 var t0_plotMarker = 0
 var t1_plotMarker = 0
+var t0_validCheck = 0
+var t1_validCheck = 0
 
 var binTime = 0
 var addToMapTime = 0
 var plotTime = 0
 var removeLayerTime = 0
 var plotMarkerTime = 0 
+var validCheckTime = 0
 ////////////////////////////
 
 function setGlobals() {
@@ -193,6 +196,7 @@ function onQueryResponse(response) {
 		console.log('----- Time taken in total to run plotMarker() fn is '+plotMarkerTime+' miliseconds, ('+100*plotMarkerTime/plotTime+'% of plotting time);');		
 		console.log('----- Time taken in total to add all points to map using point.addTo(map) is '+addToMapTime+' miliseconds, ('+100*addToMapTime/plotTime+'% of plotting time);');		
 		console.log('----- Time taken in total to determine bins is '+binTime+' miliseconds, ('+100*binTime/plotTime+'% of plotting time);');		
+		console.log('----- Time taken in total to check point validity is '+validCheckTime+' miliseconds, ('+100*validCheckTime/plotTime+'% of plotting time);');		
 		
 		
 	}
@@ -1107,6 +1111,7 @@ function adjustDisplayForMobile() {
 }
 
 function pointIsValid(i) {		//checks if that points at AllData[i] is valid. If so, returns true. Else, returns false.
+	t0_validCheck = performance.now();
 	if( AllData[i][DATA_NAMES.lat] == null | AllData[i][DATA_NAMES.lat] == "" |	//	make sure, for a given point, that the
 		AllData[i][DATA_NAMES.lng] == null | AllData[i][DATA_NAMES.lng] == "" |			//	lat, lng, and date are all present
 		AllData[i][DATA_NAMES.date] == NOT_PRESENT ) {
@@ -1123,5 +1128,7 @@ function pointIsValid(i) {		//checks if that points at AllData[i] is valid. If s
 		(AllData[i][DATA_NAMES.as] == null | AllData[i][DATA_NAMES.as] == "") )) {
 		return false	
 	} 
+	t1_validCheck = performance.now();
+	validCheckTime = validCheckTime + t1_validCheck - t0_validCheck;
 	return true	
 }
