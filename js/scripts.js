@@ -183,8 +183,8 @@ function onQueryResponse(response) {
 		plotTime = t1-t0
 		console.log('Time taken to plot data is '+plotTime+' miliseconds, which can be broken down into:');		
 		
-		console.log('----- Time taken in total to add all points to map using point.addTo(map) is '+addToMapTime+' miliseconds, ('+addToMapTime/plotTime+'% of plotting time);');		
-		console.log('----- Time taken in total to determine bins is '+binTime+' miliseconds, ('+binTime/plotTime+'% of plotting time);');		
+		console.log('----- Time taken in total to add all points to map using point.addTo(map) is '+addToMapTime+' miliseconds, ('+100*addToMapTime/plotTime+'% of plotting time);');		
+		console.log('----- Time taken in total to determine bins is '+binTime+' miliseconds, ('+100*binTime/plotTime+'% of plotting time);');		
 		
 		
 	}
@@ -468,7 +468,7 @@ function getBin(index, bins) {
 		// 	you can parse the bin. Good luck!
 	};
 	t1_bin = performance.now();
-	binTime = binTime + t1 - t0;
+	binTime = binTime + t1_bin - t0_bin;
 	return realBin;	
 }
 
