@@ -1,6 +1,8 @@
 /////// FOR DEBUGGING //////
 var t0 = 0
 var t1 = 0
+var t0_add = 0
+var t1_add = 0
 var addToMapTime = 0
 ////////////////////////////
 
@@ -357,10 +359,10 @@ function plotMarker(type, contam, data_index, border) {
 			.setLatLng(latLng)
 			.setContent(popupText)
 		);
-		t0 = performance.now()
+		t0_add = performance.now()
 		base.Markers[base.Markers.length-1].addTo(map); // And finally, actually add the markers to the map!
-		t1 = performance.now()
-		addToMapTime = addToMapTime + t1 - t0;
+		t1_add = performance.now()
+		addToMapTime = addToMapTime + t1_add - t0_add;
 	} else {						// If the point isn't being displayed, push
 		base.Markers.push(false); 	// 	falses into the array, so that the indexes
 		base.Popups.push(false); 	// 	are the same as in the SQL querried data. 
