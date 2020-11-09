@@ -187,14 +187,20 @@ function onQueryResponse(response) {
 	if(response.isError()) {
 		throw new Error("data could not be retieved from Google sheets")
 	} else {
+		t0 = performance.now()
 		AllData = googleDataTable2JSON(response.getDataTable());	// convert data to json, store as global
+		t1 = performance.now()
+		console.log('Time taken to convert to JSON is '+(t1-t0)+' miliseconds');
 		setupSearch();
-		plotData(TOTAL_RISK);												// feed into plotting function											
+		t0 = performance.now()
+		plotData(TOTAL_RISK);												// feed into plotting function	
+		t1 = performance.now()
+		console.log('Time taken to plot data is '+(t1-t0)+' miliseconds');		
 	}
 }
 
 function googleDataTable2JSON(dataTable) {
-numCols = dataTable.getNumberOfColumns();
+	numCols = dataTable.getNumberOfColumns();
 	numRows = dataTable.getNumberOfRows();
 
 	var data = [];										// initialze data array to hold json
