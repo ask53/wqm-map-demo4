@@ -80,42 +80,42 @@ var Y_STRETCH = 30;						//	geometry.
 
 var POLY_WEIGHT = 5;					// weight of the spidered polylines
 var POLY_OPACITY = 1;					// opacity of the spidered polylines
-var POLY_COLOR = '#2027f9';				// color of the spidered polylines
+var POLY_COLOR = '#000000';				// color of the spidered polylines
 
 var MAX_LABEL_LINE_CHARS = 20;			// the max number of characters on a line in the floating labels
 
 var STAMEN_MAP_TYPE = "terrain";		// Set which type of stamen map we want as a base layer.
 										// 	options include: "terrain", "watercolor", and "toner"
 
-var X_URL = "https://caminosdeagua.github.io/wqm-map/img/xButton_blue.png";		// URL for x-button used to close the spider
+var X_URL = "https://ask53.github.io/wqm-map-demo4/img/xButton_black.png";		// URL for x-button used to close the spider
 
-var BASE_URLS = ["https://caminosdeagua.github.io/wqm-map/img/grey-grey.png",		// URLs for points with white borders
-				"https://caminosdeagua.github.io/wqm-map/img/green-green.png",
-				"https://caminosdeagua.github.io/wqm-map/img/yellow-yellow.png",
-				"https://caminosdeagua.github.io/wqm-map/img/red-red.png",
-				"https://caminosdeagua.github.io/wqm-map/img/black-black.png"];
+var BASE_URLS = ["https://ask53.github.io/wqm-map-demo4/img/0_plain.png",	// URLs for point with blue borders
+				"https://ask53.github.io/wqm-map-demo4/img/1_plain.png",
+				"https://ask53.github.io/wqm-map-demo4/img/2_plain.png",
+				"https://ask53.github.io/wqm-map-demo4/img/3_plain.png",
+				"https://ask53.github.io/wqm-map-demo4/img/4_plain.png"];
 
-var SPIDER_URLS = ["https://caminosdeagua.github.io/wqm-map/img/greySpider.png",	// URLs for point with blue borders
-				"https://caminosdeagua.github.io/wqm-map/img/greenSpider.png",
-				"https://caminosdeagua.github.io/wqm-map/img/yellowSpider.png",
-				"https://caminosdeagua.github.io/wqm-map/img/redSpider.png",
-				"https://caminosdeagua.github.io/wqm-map/img/blackSpider.png"];
+var SPIDER_URLS = ["https://ask53.github.io/wqm-map-demo4/img/0_plain.png",	// URLs for point with blue borders
+				"https://ask53.github.io/wqm-map-demo4/img/1_plain.png",
+				"https://ask53.github.io/wqm-map-demo4/img/2_plain.png",
+				"https://ask53.github.io/wqm-map-demo4/img/3_plain.png",
+				"https://ask53.github.io/wqm-map-demo4/img/4_plain.png"];
 
-var HISTORICAL_BASE_URLS = [["https://caminosdeagua.github.io/wqm-map/img/grey-white.png",		// URLs for points with specific borders
-							"https://caminosdeagua.github.io/wqm-map/img/grey-green.png",
-							"https://caminosdeagua.github.io/wqm-map/img/grey-yellow.png",
-							"https://caminosdeagua.github.io/wqm-map/img/grey-red.png",
-							"https://caminosdeagua.github.io/wqm-map/img/grey-black.png"],
-							[0,"https://caminosdeagua.github.io/wqm-map/img/green-white.png",
-							"https://caminosdeagua.github.io/wqm-map/img/green-yellow.png",
-							"https://caminosdeagua.github.io/wqm-map/img/green-red.png",
-							"https://caminosdeagua.github.io/wqm-map/img/green-black.png"],
-							[0,0,"https://caminosdeagua.github.io/wqm-map/img/yellow-white.png",
-							"https://caminosdeagua.github.io/wqm-map/img/yellow-red.png",
-							"https://caminosdeagua.github.io/wqm-map/img/yellow-black.png"],
-							[0,0,0,"https://caminosdeagua.github.io/wqm-map/img/red-white.png",
-							"https://caminosdeagua.github.io/wqm-map/img/red-black.png"],
-							[0,0,0,0,"https://caminosdeagua.github.io/wqm-map/img/black-white.png"]];
+var HISTORICAL_BASE_URLS = [["https://ask53.github.io/wqm-map-demo4/img/0_target.png",		// URLs for points with specific borders
+							"https://ask53.github.io/wqm-map-demo4/img/grey-green.png",
+							"https://ask53.github.io/wqm-map-demo4/img/grey-yellow.png",
+							"https://ask53.github.io/wqm-map-demo4/img/grey-red.png",
+							"https://ask53.github.io/wqm-map-demo4/img/grey-black.png"],
+							[0,"https://ask53.github.io/wqm-map-demo4/img/1_target.png",
+							"https://ask53.github.io/wqm-map-demo4/img/green-yellow.png",
+							"https://ask53.github.io/wqm-map-demo4/img/green-red.png",
+							"https://ask53.github.io/wqm-map-demo4/img/green-black.png"],
+							[0,0,"https://ask53.github.io/wqm-map-demo4/img/2_target.png",
+							"https://ask53.github.io/wqm-map-demo4/img/yellow-red.png",
+							"https://ask53.github.io/wqm-map-demo4/img/yellow-black.png"],
+							[0,0,0,"https://ask53.github.io/wqm-map-demo4/img/3_target.png",
+							"https://ask53.github.io/wqm-map-demo4/img/red-black.png"],
+							[0,0,0,0,"https://ask53.github.io/wqm-map-demo4/img/4_target.png"]];
 
 var SMALL_ICON_SIZE = [16,16]; 			// The pixel x and y that the final marker icon image is scaled to.
 var LARGE_ICON_SIZE = [24,24];			// A larger marker for the base of the spider
